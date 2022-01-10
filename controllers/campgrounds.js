@@ -59,7 +59,14 @@ module.exports.createNewCampground = async (req, res) => {
 
 module.exports.updateCampground = async (req, res) => {
   const { id } = req.params;
+  const geoData = await geocoder
+    .forwardGeocode({
+      query: req.body.campground.location,
+      limit: 1,
+    })
+    .send();
   const updatingCampground = req.body.campground;
+  updatingCampground.geometry = geoData.body.features[0].geometry;
   const updatedCampground = await Campground.findByIdAndUpdate(
     id,
     updatingCampground,
