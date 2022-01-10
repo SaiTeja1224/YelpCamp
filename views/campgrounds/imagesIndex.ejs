@@ -1,0 +1,35 @@
+<% layout("layouts/boilerplate") -%>
+<div class="row col-8 offset-2">
+  <form
+    class="form-control"
+    action="/campgrounds/<%=campground._id%>/images/?_method=DELETE"
+    method="post"
+  >
+    <div class="form-group mb-3 w-100 d-flex flex-wrap">
+      <% campground.images.forEach((img,i) => { %>
+      <div class="col-3">
+        <div class="card">
+          <img src="<%=img.thumbnail%>" alt="" class="img-thumbnail card-img" />
+          <div
+            class="form-check card-img-overlay w-100 text-end pt-2 image-<%=i%>"
+          >
+            <input
+              type="checkbox"
+              name="deleteImages[]"
+              id="image-<%=i%>"
+              value="<%=img.filename%>"
+              class="rounded-3"
+            />
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <div class="mb-3 d-flex">
+      <button class="btn btn-success w-100">Confirm</button>
+      <a href="/campgrounds/<%=campground._id%>" class="btn btn-danger w-100"
+        >Cancel</a
+      >
+    </div>
+  </form>
+</div>
