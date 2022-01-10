@@ -184,9 +184,7 @@ app.use((err, req, res, next) => {
       .status(400)
       .render("error", { err, message: "Invalid Campground ID Encountered" });
   } else {
-    res
-      .status(status)
-      .render("error", { err, message, returnTo: req.session.returnTo });
+    res.status(status).render("error", { err, message });
   }
 });
 
