@@ -191,6 +191,7 @@ app.use((err, req, res, next) => {
 });
 
 //start of local server
-app.listen(3000, () => {
-  console.log("Express application served over the port 3000");
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Express application served over the port ${port}`);
 });
