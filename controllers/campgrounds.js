@@ -2,7 +2,7 @@ const Campground = require("../models/campground");
 const { cloudinary } = require("../cloudinary");
 
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
-const geocoder = mbxGeocoding({ accessToken: process.env.MAPBOX_TOKEN });
+// const geocoder = mbxGeocoding({ accessToken: process.env.MAPBOX_TOKEN });
 
 module.exports.index = async (req, res) => {
   const { pageCount = 1 } = req.query;
@@ -36,18 +36,18 @@ module.exports.editCampgroundForm = async (req, res) => {
 };
 
 module.exports.createNewCampground = async (req, res) => {
-  const geoData = await geocoder
-    .forwardGeocode({
-      query: req.body.campground.location,
-      limit: 1,
-    })
-    .send();
+  // const geoData = await geocoder
+  //   .forwardGeocode({
+  //     query: req.body.campground.location,
+  //     limit: 1,
+  //   })
+  //   .send();
   const campgroundImages = req.files.map((f) => ({
     url: f.path,
     filename: f.filename,
   }));
   const campground = req.body.campground;
-  campground.geometry = geoData.body.features[0].geometry;
+  // campground.geometry = geoData.body.features[0].geometry;
   const newCampground = new Campground(campground);
   newCampground.author = req.user;
   newCampground.images = campgroundImages;
@@ -58,14 +58,14 @@ module.exports.createNewCampground = async (req, res) => {
 
 module.exports.updateCampground = async (req, res) => {
   const { id } = req.params;
-  const geoData = await geocoder
-    .forwardGeocode({
-      query: req.body.campground.location,
-      limit: 1,
-    })
-    .send();
+  // const geoData = await geocoder
+  //   .forwardGeocode({
+  //     query: req.body.campground.location,
+  //     limit: 1,
+  //   })
+  //   .send();
   const updatingCampground = req.body.campground;
-  updatingCampground.geometry = geoData.body.features[0].geometry;
+  // updatingCampground.geometry = geoData.body.features[0].geometry;
   const updatedCampground = await Campground.findByIdAndUpdate(
     id,
     updatingCampground,

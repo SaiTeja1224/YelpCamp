@@ -62,7 +62,7 @@ const scriptSrcUrls = [
   "https://kit.fontawesome.com/",
   "https://cdnjs.cloudflare.com/",
   "https://cdn.jsdelivr.net",
-  "https://res.cloudinary.com/dcidbpjak/",
+  "https://res.cloudinary.com/dzmz6ns6s/",
   "https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js",
 ];
 const styleSrcUrls = [
@@ -73,16 +73,16 @@ const styleSrcUrls = [
   "https://fonts.googleapis.com/",
   "https://use.fontawesome.com/",
   "https://cdn.jsdelivr.net",
-  "https://res.cloudinary.com/dcidbpjak/",
+  "https://res.cloudinary.com/dzmz6ns6s/",
 ];
 const connectSrcUrls = [
   "https://api.mapbox.com/",
   "https://a.tiles.mapbox.com/",
   "https://b.tiles.mapbox.com/",
   "https://events.mapbox.com/",
-  "https://res.cloudinary.com/dcidbpjak/",
+  "https://res.cloudinary.com/dzmz6ns6s/",
 ];
-const fontSrcUrls = ["https://res.cloudinary.com/dcidbpjak/"];
+const fontSrcUrls = ["https://res.cloudinary.com/dzmz6ns6s/"];
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
@@ -96,11 +96,11 @@ app.use(
         "'self'",
         "blob:",
         "data:",
-        "https://res.cloudinary.com/dcidbpjak/",
+        "https://res.cloudinary.com/dzmz6ns6s/",
         "https://images.unsplash.com/",
       ],
       fontSrc: ["'self'", ...fontSrcUrls],
-      mediaSrc: ["https://res.cloudinary.com/dcidbpjak/"],
+      mediaSrc: ["https://res.cloudinary.com/dzmz6ns6s/"],
       childSrc: ["blob:"],
     },
   })
